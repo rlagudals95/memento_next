@@ -1,4 +1,4 @@
-export enum LifeExpectancy {
-  MALE = "81",
-  FEMALE = "87",
+export enum SEX {
+  MALE = "MALE",
+  FEMALE = "FEMALE",
 }

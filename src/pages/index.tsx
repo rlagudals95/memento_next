@@ -4,6 +4,7 @@ import { Meta } from "@/layouts/Meta";
 import { Main } from "@/templates/Main";
 import MainPage from "./MainPage";
 import { useEffect } from "react";
+import InitPage from "./InitPage";
 
 const Index = () => {
   const router = useRouter();
@@ -21,7 +22,7 @@ const Index = () => {
         />
       }
     >
-      <MainPage />
+      <InitPage />
     </Main>
   );
 };
