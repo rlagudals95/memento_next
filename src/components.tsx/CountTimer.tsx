@@ -1,16 +1,41 @@
-import React, { useEffect, useState, memo } from "react";
+import React, { useEffect, useState, useCallback, memo } from "react";
+import { SEX } from "@/constants";
 
 const CountTimer = () => {
-  useEffect(() => {
-
-    console.log('seconds : ', Math.floor(new Date().getTime() / 1000));
-    console.log('minutes :', (new Date().getFullYear() + 80));
-    
+  const [lifeSeconds, setLifeSeconds] = useState(0);
+  const [test, setTest] = useState(1000);
 
 
-    console.log(Math.floor(new Date().getTime() / 1000));
+  
+  const setLifeExpectancyAndStartCounting = useCallback(() => {
+    const birthday = localStorage.getItem("birthday") as unknown as string;
+    const lifeExpectancyBySex =
+      localStorage.getItem("sex") === SEX.FEMALE ? 80 : 83;
+
+    const lifeExpectancyDate =
+      `${String(parseInt(birthday.substring(0, 4)) + lifeExpectancyBySex)}` +
+      String(birthday.substr(4, 8));
+    const lifeExpectancySeconds = new Date(lifeExpectancyDate).getTime() / 1000;
+
+    setLifeSeconds(lifeExpectancySeconds);
   }, []);
-  return <>0000</>;
+
+  useEffect(() => {
+    setLifeExpectancyAndStartCounting();
+
+    function setTimeOutRecursion() {
+      setTimeout(function () {
+        console.log("count")
+        setTest(test - 1);
+        setTimeOutRecursion();
+      }, 1000);
+    }
+
+    setTimeOutRecursion();
+    // /return setTimeOutRecursion();
+  }, []);
+
+  return <>{test}</>;
 };
 
 export default memo(CountTimer);
