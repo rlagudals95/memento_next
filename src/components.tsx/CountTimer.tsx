@@ -17,8 +17,8 @@ const CountTimer = () => {
 
     // 기대 수명
     const lifeExpectancyDate =
-      `${String(parseInt(birthday.substring(0, 4)) + lifeExpectancyBySex)}` +
-      String(birthday.substr(4, 8));
+      `${String(parseInt(birthday?.substring(0, 4)) + lifeExpectancyBySex)}` +
+      String(birthday?.substr(4, 8));
 
     const lifeExpectancySeconds = new Date(lifeExpectancyDate).getTime() / 1000;
 
@@ -26,9 +26,9 @@ const CountTimer = () => {
     const now = Math.floor(new Date().getTime() / 1000);
 
     // 남은 수명
-    const livedSeconds = lifeExpectancySeconds - now;
+    const _livedSeconds = lifeExpectancySeconds - now;
 
-    setLifeSeconds(livedSeconds);
+    setLifeSeconds(_livedSeconds);
   }, []);
 
   useEffect(() => {

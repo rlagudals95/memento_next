@@ -7,14 +7,15 @@ import {
   MenuItem,
   InputLabel,
   Select,
+  SelectChangeEvent,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
-import { SEX } from "@/constants";
 
 const InitPage = () => {
+  const router = useRouter();
   useEffect(() => {
     if (
       localStorage.getItem("birthday") &&
@@ -24,7 +25,7 @@ const InitPage = () => {
       router.replace("/MainPage");
     }
   }, []);
-  const router = useRouter();
+
   const [date, setDate] = useState<Dayjs | null>(dayjs(new Date()));
   const [name, setName] = useState("");
   const [sex, setSex] = useState("");
@@ -37,15 +38,13 @@ const InitPage = () => {
   );
 
   const handleChangeName = useCallback(
-    (e: React.ChangeEvent) => {
-      //@ts-ignore
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       setName(e.target?.value);
     },
     [name]
   );
 
   const handleClickGoMain = useCallback(async () => {
-
     if (!date || !name || !sex) {
       alert("입력을 확인해 주세요!");
       return;
@@ -57,11 +56,10 @@ const InitPage = () => {
     router.replace("/MainPage");
   }, [name, date, sex]);
 
-  const sexList = [SEX.FEMALE, SEX.MALE];
+  const sexList = ["female", "male"];
 
   const handleChangeSex = useCallback(
-    (e: React.ChangeEvent) => {
-      //@ts-ignore
+    (e: SelectChangeEvent<string>) => {
       setSex(e.target.value);
     },
     [sex]
@@ -79,7 +77,8 @@ const InitPage = () => {
             renderInput={(params) => <TextField {...params} />}
           />
           <TextField
-            className="my-5 w-full"
+            style={{ marginTop: "10px" }}
+            className="w-full"
             required
             id="outlined-required"
             label="name"
@@ -89,26 +88,26 @@ const InitPage = () => {
             sx={{ width: 300 }}
           />
 
-          <FormControl>
+          <FormControl style={{ marginTop: "10px" }}>
             <InputLabel id="demo-simple-select-helper-label">sex</InputLabel>
             <Select
               labelId="demo-simple-select-helper-label"
               id="demo-simple-select-helper"
               value={sex}
               label="sex"
-              //@ts-ignore
               onChange={handleChangeSex}
             >
-              {Array.from(sexList).map((sex) => {
+              {Array.from(sexList).map((item) => {
                 return (
-                  <MenuItem key={sex} value={sex}>
-                    {sex}
+                  <MenuItem key={item} value={item}>
+                    {item}
                   </MenuItem>
                 );
               })}
             </Select>
           </FormControl>
           <Button
+            style={{ marginTop: "20px" }}
             className="my-3"
             color="primary"
             onClick={handleClickGoMain}
