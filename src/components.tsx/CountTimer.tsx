@@ -42,7 +42,7 @@ const CountTimer = () => {
     };
   }, []);
 
-  return <div>{lifeSeconds}</div>;
+  return <div className="font-bold">{lifeSeconds}</div>;
 };
 
 export default CountTimer;
