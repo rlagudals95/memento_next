@@ -13,21 +13,20 @@ const CountTimer = () => {
     }
     const lifeExpectancyBySex =
       localStorage.getItem("sex") === SEX.FEMALE ? 80 : 83;
-    
+
     // 기대 수명
     const lifeExpectancyDate =
       `${String(parseInt(birthday.substring(0, 4)) + lifeExpectancyBySex)}` +
       String(birthday.substr(4, 8));
-    console.log('lifeExpectancyDate :', lifeExpectancyDate)
+
     const lifeExpectancySeconds = new Date(lifeExpectancyDate).getTime() / 1000;
-    console.log('birthday &&  : ', birthday, lifeExpectancyDate, new Date )
-    
+
     // 현재
     const now = Math.floor(new Date().getTime() / 1000);
 
     // 남은 수명
     const livedSeconds = lifeExpectancySeconds - now;
-   
+
     setLifeSeconds(livedSeconds);
   }, []);
 

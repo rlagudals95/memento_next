@@ -45,7 +45,7 @@ const InitPage = () => {
   );
 
   const handleClickGoMain = useCallback(async () => {
-    console.log(date, name, sex);
+
     if (!date || !name || !sex) {
       alert("입력을 확인해 주세요!");
       return;
