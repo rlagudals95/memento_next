@@ -10,6 +10,7 @@ const CountTimer = () => {
     const birthday = localStorage.getItem("birthday") as unknown as string;
     if (!birthday) {
       router.replace("/");
+      return
     }
     const lifeExpectancyBySex =
       localStorage.getItem("sex") === SEX.FEMALE ? 80 : 83;
