@@ -2,6 +2,8 @@
 myNextApplication:
   component: '@sls-next/serverless-component@latest'
   inputs:
+    bucketRegion: 'ap-northeast-2'
+    bucketName: 'mementomori.prod'
     name:
       defaultLambda: DefaultLambda	#Default Lambda의 이름 설정 
       imageLambda: ImageLambda	# Image Lambda의 이름 설정
