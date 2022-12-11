@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef, memo } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { SEX } from "@/constants";
 import { useRouter } from "next/router";
 

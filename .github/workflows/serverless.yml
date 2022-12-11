@@ -62,4 +62,4 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            dist http://mementomori.prod.s3-website.ap-northeast-2.amazonaws.com/
+            dist s3://mementomori.prod.s3-website.ap-northeast-2.amazonaws.com/
