@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 const CountTimer = () => {
   const router = useRouter();
-  const counterRef = useRef<HTMLInputElement>(null);
   const [lifeSeconds, setLifeSeconds] = useState(0);
 
   const lifeExpectancy = useCallback(() => {
@@ -14,20 +13,23 @@ const CountTimer = () => {
     }
     const lifeExpectancyBySex =
       localStorage.getItem("sex") === SEX.FEMALE ? 80 : 83;
-
+    
+    // 기대 수명
     const lifeExpectancyDate =
       `${String(parseInt(birthday.substring(0, 4)) + lifeExpectancyBySex)}` +
       String(birthday.substr(4, 8));
-
+    console.log('lifeExpectancyDate :', lifeExpectancyDate)
     const lifeExpectancySeconds = new Date(lifeExpectancyDate).getTime() / 1000;
-    setLifeSeconds(lifeExpectancySeconds);
-    return lifeExpectancySeconds;
+    console.log('birthday &&  : ', birthday, lifeExpectancyDate, new Date )
+    
+    // 현재
+    const now = Math.floor(new Date().getTime() / 1000);
+
+    // 남은 수명
+    const livedSeconds = lifeExpectancySeconds - now;
+   
+    setLifeSeconds(livedSeconds);
   }, []);
-
-
-  const renewalLifeExpectancy = useCallback(() => {
-    localStorage.setItem("lifeSeconds", String(counterRef?.current?.value));
-  }, [lifeSeconds]);
 
   useEffect(() => {
     lifeExpectancy();
@@ -37,16 +39,10 @@ const CountTimer = () => {
 
     return () => {
       clearInterval(myInterval);
-      
-      renewalLifeExpectancy();
     };
   }, []);
 
-  return (
-    <div>
-      <input onChange={(e) => {console.log('ccc', e)}} readOnly={true} type="text" ref={counterRef} value={lifeSeconds} />
-    </div>
-  );
+  return <div>{lifeSeconds}</div>;
 };
 
 export default CountTimer;
