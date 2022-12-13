@@ -18,7 +18,7 @@ export default function SimpleBottomNavigation() {
     localStorage.removeItem("name");
     localStorage.removeItem("sex");
 
-    router.replace("/MainPage");
+    router.replace("/");
   }, []);
   return (
     <Paper
@@ -35,12 +35,12 @@ export default function SimpleBottomNavigation() {
           }}
         >
           <BottomNavigationAction
-            onClick={() => {console.log('?')}}
+            onClick={handleClickReset}
             label="reset"
             icon={<RestoreIcon />}
           />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+          {/* <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}
         </BottomNavigation>
       </Box>
     </Paper>

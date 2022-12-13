@@ -11,7 +11,6 @@ class MyDocument extends Document {
       <Html lang={AppConfig.locale}>
         <Head />
         <body>
-          <SimpleBottomNavigation />
           <Main />
           <NextScript />
         </body>
