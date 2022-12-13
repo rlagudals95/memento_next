@@ -1,6 +1,7 @@
-import Document, { Head, Html, Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
-import { AppConfig } from '@/utils/AppConfig';
+import { AppConfig } from "@/utils/AppConfig";
+import SimpleBottomNavigation from "@/components.tsx/SimpleBottomNavigationBottomNavigation";
 
 // Need to create a custom _document because i18n support is not compatible with `next export`.
 class MyDocument extends Document {
@@ -10,6 +11,7 @@ class MyDocument extends Document {
       <Html lang={AppConfig.locale}>
         <Head />
         <body>
+          <SimpleBottomNavigation />
           <Main />
           <NextScript />
         </body>
