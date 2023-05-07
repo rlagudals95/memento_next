@@ -2,14 +2,15 @@ import React, { useEffect, useState, useCallback } from "react";
 import { SEX } from "@/constants";
 import { useRouter } from "next/router";
 import styled from "@emotion/styled";
+import { FontSize } from "@/constants/style";
 
 const CountTimer = () => {
   const router = useRouter();
   const [lifeSeconds, setLifeSeconds] = useState(0);
-  const [name, setName] = useState("")
+  const [name, setName] = useState(localStorage.getItem('name') || null)
+  const [birthday, setBirthDay] = useState(localStorage.getItem("birthday" || null));
 
   const lifeExpectancy = useCallback(() => {
-    const birthday = localStorage.getItem("birthday") as unknown as string;
     if (!birthday) {
       router.replace("/");
       return
@@ -36,7 +37,7 @@ const CountTimer = () => {
   useEffect(() => {
     // @TODO 백엔드 통신으로 모두 변경하자
     lifeExpectancy();
-    setName(localStorage.getItem('name') || "");
+
     const myInterval = setInterval(() => {
       setLifeSeconds((lifeSeconds) => lifeSeconds - 1);
     }, 1000);
@@ -48,8 +49,9 @@ const CountTimer = () => {
 
   return (
     <Container>
-      {name && <div>{name}님의 남은 시간</div>}
+      <Name>{name}님의 남은 시간</Name>
       <LifeExpectancy>{lifeSeconds}</LifeExpectancy>
+      <Birthday>{birthday}</Birthday>
     </Container>
   );
 };
@@ -61,11 +63,20 @@ const Container = styled.div`
   align-items: center;
 `
 
+const Name = styled.div`
+  font-size: ${FontSize.Mideum};
+`
 
 const LifeExpectancy = styled.div`
   margin-top: 4px;
-  font-size: 18px;
+  font-size: ${FontSize.Large};
   font-weight: 700;
+`
+
+const Birthday = styled.div`
+  margin-top: 5px;
+  font-size: ${FontSize.Small};
+  opacity: 0.5;
 `
 
 export default CountTimer;
