@@ -1,5 +1,5 @@
 node_modules
 out
 src/pages/MainPage.tsx
-src/pages/InitPage.tsx
+src/pages/SettingPage.tsx
 src/components.tsx/CountTimer.tsx

@@ -1,6 +1,6 @@
 import { Meta } from "@/layouts/Meta";
 import { Main } from "@/templates/Main";
-import InitPage from "./InitPage";
+import SettingPage from "./SettingPage";
 
 const Index = () => {
   return (
@@ -12,7 +12,7 @@ const Index = () => {
         />
       }
     >
-      <InitPage />
+      <SettingPage />
     </Main>
   );
 };
