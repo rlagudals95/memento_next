@@ -3,6 +3,7 @@ import { SEX } from "@/constants";
 import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 import { FontSize } from "@/constants/style";
+import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
 
 const CountTimer = () => {
   const router = useRouter();
@@ -47,11 +48,21 @@ const CountTimer = () => {
     };
   }, []);
 
+
+  const handleClickReset = useCallback(() => {
+    //@TODO 서버 로직으로 변경할거 예요~
+    localStorage.removeItem('name');
+    localStorage.removeItem('birthday');
+    localStorage.removeItem('sex');
+    router.replace("/");
+  }, [])
+
   return (
     <Container>
       <Name>{name}님의 남은 시간</Name>
       <LifeExpectancy>{lifeSeconds}</LifeExpectancy>
       <Birthday>{birthday}</Birthday>
+      <SettingsBackupRestoreIcon onClick={handleClickReset} style={{ marginTop: '50px' }} sx={{ fontSize: 35 }} />
     </Container>
   );
 };
@@ -61,6 +72,10 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `
 
 const Name = styled.div`
