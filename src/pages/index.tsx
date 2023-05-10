@@ -13,7 +13,9 @@ const Index = () => {
         />
       }
     >
-      <InitPage />
+      <div className="px-4">
+        <InitPage />
+      </div>
     </Main>
   );
 };
