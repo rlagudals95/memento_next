@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { FontSize } from "@/constants/style";
 import { useState } from "react";
+import SimpleSlider from "@/components.tsx/SimpleSlider";
 
 const InitPage = () => {
 
@@ -21,7 +22,7 @@ const InitPage = () => {
         죽음이 멀리 있고 대수롭지 않은 것으로 느껴질 때에는 우리 삶은 게을러져. <br />
         하지만 언제라도 죽음과 만나리라는 것을 알았을 때 인간은 보다 나은 삶을 살아갈 수 있지.<br />
       </div>
-     
+      <SimpleSlider></SimpleSlider>
       {/* 죽음이 멀리 있고 대수롭지 않은 것으로 느껴질 때에는 우리 삶은 게을러져. <br />
       하지만 언제라도 죽음과 만나리라는 것을 알았을 때 인간은 보다 나은 삶을 살아갈 수 있지.   <br />
       우리는 언제라도 죽을 수 있다는 관점에서 바라보면, 삶은 당연한 권리가 아니라 소중한 선물이야.   <br />
