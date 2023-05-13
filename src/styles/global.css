@@ -24,3 +24,14 @@ a:hover {
 .content ul {
   @apply my-6;
 }
+
+/*DragCarousel.scss*/
+.card-wrap  {
+  display: flex; /* div가 가로방향*/
+  overflow-x: scroll; /* div에 가로 스크롤을 줘서 옆으로 길게 보이게함*/
+}
+
+/*overflow-x와 함께오는 scroll bar 제거*/
+.card-wrap::-webkit-scrollbar {
+  display: none;
+}

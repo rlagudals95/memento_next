@@ -1,43 +1,71 @@
-import Slider from "react-slick";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import React, { useRef, useState } from "react";
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1
-};
+interface IProps {
+  children: React.ReactNode;
+}
 
-const SimpleSlider = () => {
-  // eslint-disable-next-line class-methods-use-this
+const SimpleSlider = (props: IProps) => {
+  const { children } = props;
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDrag, setIsDrag] = useState(false);
+  const [startX, setStartX] = useState<number | undefined>();
+
+  const onDragStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.preventDefault();
+    setIsDrag(true);
+    setStartX(e.pageX + (scrollRef.current?.scrollLeft || 0));
+  };
+
+  const onDragEnd = () => {
+    setIsDrag(false);
+  };
+
+  const onDragMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (isDrag) {
+      const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current!;
+
+      if (startX !== undefined) {
+        scrollRef.current!.scrollLeft = startX - e.pageX;
+
+        if (scrollLeft === 0) {
+          setStartX(e.pageX);
+        } else if (scrollWidth <= clientWidth + scrollLeft) {
+          setStartX(e.pageX + scrollLeft);
+        }
+      }
+    }
+  };
+
+  const throttle = (func: (...args: any[]) => void, ms: number) => {
+    let throttled = false;
+    return (...args: any[]) => {
+      if (!throttled) {
+        throttled = true;
+        setTimeout(() => {
+          func(...args);
+          throttled = false;
+        }, ms);
+      }
+    };
+  };
+
+  const delay = 50;
+  const onThrottleDragMove = throttle(onDragMove, delay);
 
   return (
-    <div>
-      <h2> Single Item</h2>
-      <Slider {...settings}>
-        <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
-      </Slider>
+    <div
+      className="card-wrap"
+      onMouseDown={onDragStart}
+      onMouseMove={isDrag ? onThrottleDragMove : undefined}
+      onMouseUp={onDragEnd}
+      onMouseLeave={onDragEnd}
+      ref={scrollRef}
+    >
+      <div className="card-wrap" ref={scrollRef}>
+        {children}
+      </div>
     </div>
   );
-}
+};
 
 export default SimpleSlider;
