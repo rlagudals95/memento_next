@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
+import styled from "@emotion/styled";
 
 interface IProps {
-  children: React.ReactNode;
+  children: React.ReactNode | React.ReactNode[];
 }
 
 const SimpleSlider = (props: IProps) => {
@@ -9,6 +10,7 @@ const SimpleSlider = (props: IProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDrag, setIsDrag] = useState(false);
   const [startX, setStartX] = useState<number | undefined>();
+  const [step, setStep] = useState(1);
 
   const onDragStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
@@ -63,6 +65,12 @@ const SimpleSlider = (props: IProps) => {
     >
       <div className="card-wrap" ref={scrollRef}>
         {children}
+      </div>
+      
+      <div className="dots">
+        {Array.from(children || []).map((dot, index) => {
+          return <div key={index} className="dot"></div>
+        })}
       </div>
     </div>
   );

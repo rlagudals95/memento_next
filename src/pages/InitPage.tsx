@@ -8,6 +8,7 @@ const InitPage = () => {
     font-size: ${FontSize.XLarge};
     font-weight: 900;
     color: black;
+    width: 95%;
   `
 
   const Section = styled.div`

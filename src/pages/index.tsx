@@ -12,10 +12,9 @@ const Index = () => {
           description="Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
         />
       }
-    >
-      <div className="px-4">
-        <InitPage />
-      </div>
+    > 
+      {/* TODO 기존 사용자는 Setting Page로 이동  */}
+      <InitPage />
     </Main>
   );
 };
