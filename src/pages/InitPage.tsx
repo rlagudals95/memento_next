@@ -35,7 +35,9 @@ const InitPage = () => {
   return (
     <Container className="grid h-screen place-items-center text-center">
       <SimpleSlider>
-        {images.map((section, index) => <Section key={section.desc}>{section.desc}</Section>)}
+        {images.map((section, index) =>
+          <Section key={section.desc}>{section.desc}</Section>
+        )}
       </SimpleSlider>
     </Container>
   );

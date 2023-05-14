@@ -21,11 +21,11 @@ const SimpleSlider = (props: IProps) => {
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDrag, setIsDrag] = useState(false);
-  const [startX, setStartX] = useState<number | undefined>();
-  const [step, setStep] = useState(1);
+  const [startX, setStartX] = useState<number>();
 
   const onDragStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
+    console.log('drag start !!')
     setIsDrag(true);
     setStartX(e.pageX + (scrollRef.current?.scrollLeft || 0));
   };
@@ -78,12 +78,6 @@ const SimpleSlider = (props: IProps) => {
       <CardWrapper className="card-wrap" ref={scrollRef}>
         {children}
       </CardWrapper>
-      
-      <div className="dots">
-        {Array.from(children || []).map((dot, index) => {
-          return <div key={index} className="dot"></div>
-        })}
-      </div>
     </Container>
   );
 };
