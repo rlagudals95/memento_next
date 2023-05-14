@@ -7,6 +7,18 @@ interface IProps {
 
 const SimpleSlider = (props: IProps) => {
   const { children } = props;
+
+  const Container = styled.div`
+    width: 100%;
+    height: 100%;
+  `
+
+  const CardWrapper = styled.div`
+    margin: auto;
+    width: 100%;
+    height: 100%;
+  `
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDrag, setIsDrag] = useState(false);
   const [startX, setStartX] = useState<number | undefined>();
@@ -55,7 +67,7 @@ const SimpleSlider = (props: IProps) => {
   const onThrottleDragMove = throttle(onDragMove, delay);
 
   return (
-    <div
+    <Container
       className="card-wrap"
       onMouseDown={onDragStart}
       onMouseMove={isDrag ? onThrottleDragMove : undefined}
@@ -63,16 +75,16 @@ const SimpleSlider = (props: IProps) => {
       onMouseLeave={onDragEnd}
       ref={scrollRef}
     >
-      <div className="card-wrap" ref={scrollRef}>
+      <CardWrapper className="card-wrap" ref={scrollRef}>
         {children}
-      </div>
+      </CardWrapper>
       
       <div className="dots">
         {Array.from(children || []).map((dot, index) => {
           return <div key={index} className="dot"></div>
         })}
       </div>
-    </div>
+    </Container>
   );
 };
 

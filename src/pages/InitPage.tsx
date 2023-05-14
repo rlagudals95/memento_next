@@ -16,6 +16,9 @@ const InitPage = () => {
     height: 100%;
     text-align: left;
     flex: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   `
 
   const images = [
