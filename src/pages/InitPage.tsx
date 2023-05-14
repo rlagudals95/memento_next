@@ -8,17 +8,17 @@ const InitPage = () => {
     font-size: ${FontSize.XLarge};
     font-weight: 900;
     color: black;
-    width: 95%;
+    width: 100vw;
   `
 
   const Section = styled.div`
     width: 100%;
     height: 100%;
     text-align: left;
-    flex: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
   `
 
   const images = [
@@ -33,7 +33,7 @@ const InitPage = () => {
 
 
   return (
-    <Container className="grid h-screen place-items-center text-center">
+    <Container className="grid h-screen text-center">
       <SimpleSlider>
         {images.map((section, index) =>
           <Section key={section.desc}>{section.desc}</Section>
