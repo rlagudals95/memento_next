@@ -58,3 +58,9 @@ a:hover {
 .card-wrap::-webkit-scrollbar {
   display: none;
 }
+
+.position-absolute-bottom {
+  position: 'fixed';
+  bottom: '20px';
+  left: '50%';
+}

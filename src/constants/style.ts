@@ -3,4 +3,5 @@ export enum FontSize {
   Mideum = '16px',
   Large = '20px',
   XLarge = '24px',
+  XXLarge = '28px',
 }
