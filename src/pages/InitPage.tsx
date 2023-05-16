@@ -3,7 +3,8 @@ import { FontSize } from "@/constants/style";
 import SimpleSlider from "@/components.tsx/SimpleSlider";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
+import { hasUserInfo } from "@/utils/AppConfig";
 
 const InitPage = () => {
 
@@ -25,6 +26,15 @@ const InitPage = () => {
   `
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (
+      hasUserInfo()
+    ) {
+      router.replace("/MainPage");
+    }
+  }, [])
+
 
   const handleClickGoSettingPage = useCallback(() => {
     router.replace("/SettingPage");

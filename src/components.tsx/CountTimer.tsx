@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 import { FontSize } from "@/constants/style";
 import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
+import { removeUserInfo } from "@/utils/AppConfig";
 
 const CountTimer = () => {
   const router = useRouter();
@@ -51,10 +52,8 @@ const CountTimer = () => {
 
   const handleClickReset = useCallback(() => {
     //@TODO 서버 로직으로 변경할거 예요~
-    localStorage.removeItem('name');
-    localStorage.removeItem('birthday');
-    localStorage.removeItem('sex');
-    router.replace("/");
+    removeUserInfo();
+    router.replace("/SettingPage");
   }, [])
 
   return (

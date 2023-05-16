@@ -14,14 +14,13 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import styled from "@emotion/styled";
+import { hasUserInfo } from "@/utils/AppConfig";
 
 const SettingPage = () => {
   const router = useRouter();
   useEffect(() => {
     if (
-      localStorage.getItem("birthday") &&
-      localStorage.getItem("name") &&
-      localStorage.getItem("sex")
+      hasUserInfo()
     ) {
       router.replace("/MainPage");
     }
