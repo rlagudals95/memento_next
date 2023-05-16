@@ -13,6 +13,7 @@ import TextField from "@mui/material/TextField";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+import styled from "@emotion/styled";
 
 const SettingPage = () => {
   const router = useRouter();
@@ -64,9 +65,16 @@ const SettingPage = () => {
     },
     [sex]
   );
+
+  const Container = styled.div`
+    margin: auto 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  `
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <div className="flex flex-col">
+    <div className="grid h-screen text-center">
+      <Container>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <MobileDatePicker
             className="w-full"
@@ -116,7 +124,7 @@ const SettingPage = () => {
             mementomori
           </Button>
         </LocalizationProvider>
-      </div>
+      </Container>
     </div>
   );
 };
