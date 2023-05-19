@@ -1,15 +1,19 @@
 import { getOs, OS } from "./osHelper";
 
 export interface MessagePacket {
-  type: string;
+  type: MessageType;
   body: any;
+}
+
+export enum MessageType {
+  auth = "auth",
 }
 
 export const onMessage = (e: MessageEvent) => {
   const { type, data } = JSON.parse(e.data);
 
   switch (type) {
-    case "test":
+    case MessageType.auth:
       break;
     default:
       break;

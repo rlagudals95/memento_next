@@ -15,6 +15,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import styled from "@emotion/styled";
 import { hasUserInfo } from "@/utils/AppConfig";
+import { MessageType, postMessage } from "@/helpers/messageHelper";
 
 const SettingPage = () => {
   const router = useRouter();
@@ -44,7 +45,7 @@ const SettingPage = () => {
     [name]
   );
 
-  const handleClickGoMain = useCallback(async () => {
+  const handleClickSubmit = useCallback(async () => {
     if (!date || !name || !sex) {
       alert("입력을 확인해 주세요!");
       return;
@@ -53,6 +54,9 @@ const SettingPage = () => {
     await localStorage.setItem("birthday", date.format("YYYY-MM-DD"));
     await localStorage.setItem("name", name);
     await localStorage.setItem("sex", sex);
+
+    await postMessage({type: MessageType.auth, body: {birthday: date.format("YYYY-MM-DD"), name, sex}})
+
     router.replace("/MainPage");
   }, [name, date, sex]);
 
@@ -117,7 +121,7 @@ const SettingPage = () => {
             style={{ marginTop: "20px" }}
             className="my-3"
             color="primary"
-            onClick={handleClickGoMain}
+            onClick={handleClickSubmit}
             variant="outlined"
           >
             mementomori
