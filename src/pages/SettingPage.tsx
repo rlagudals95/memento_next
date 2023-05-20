@@ -55,7 +55,7 @@ const SettingPage = () => {
     await localStorage.setItem("name", name);
     await localStorage.setItem("sex", sex);
 
-    await postMessage({type: MessageType.auth, body: {birthday: date.format("YYYY-MM-DD"), name, sex}})
+    await postMessage({ type: MessageType.auth, body: { birthday: date.format("YYYY-MM-DD"), name, sex } })
 
     router.replace("/MainPage");
   }, [name, date, sex]);
@@ -93,9 +93,7 @@ const SettingPage = () => {
             required
             id="outlined-required"
             label="name"
-            value={name}
-            onChange={handleChangeName}
-            defaultValue="name"
+            type="text"
             sx={{ width: 300 }}
           />
 
