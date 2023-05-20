@@ -73,8 +73,8 @@ const SettingPage = () => {
     await localStorage.setItem("sex", sex);
 
     await postMessage({ type: MessageType.auth, body: { birthday: date.format("YYYY-MM-DD"), name, sex } })
-
-    //router.replace("/MainPage");
+    return
+    router.replace("/MainPage");
   }, [name, date, sex]);
 
   return (
