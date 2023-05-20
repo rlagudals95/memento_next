@@ -68,11 +68,15 @@ const SettingPage = () => {
       return;
     }
 
-    await localStorage.setItem("birthday", date.format("YYYY-MM-DD"));
-    await localStorage.setItem("name", name);
-    await localStorage.setItem("sex", sex);
+    localStorage.setItem("birthday", date.format("YYYY-MM-DD"));
+    localStorage.setItem("name", name);
+    localStorage.setItem("sex", sex);
+    try {
+      await postMessage({ type: MessageType.auth, body: { birthday: date.format("YYYY-MM-DD"), name, sex } })
+    } catch (error) {
+      console.log(`postmessage error ${error}`)
+    }
 
-    await postMessage({ type: MessageType.auth, body: { birthday: date.format("YYYY-MM-DD"), name, sex } })
     return
     router.replace("/MainPage");
   }, [name, date, sex]);
