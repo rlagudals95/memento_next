@@ -64,7 +64,7 @@ const SettingPage = () => {
 
   const handleClickSubmit = useCallback(async () => {
     if (!date || !name || !sex) {
-      alert("입력을 확인해 주세요!");
+      alert("생일과 이름 성별을 입력 주세요!");
       return;
     }
 
@@ -74,7 +74,7 @@ const SettingPage = () => {
 
     await postMessage({ type: MessageType.auth, body: { birthday: date.format("YYYY-MM-DD"), name, sex } })
 
-    router.replace("/MainPage");
+    //router.replace("/MainPage");
   }, [name, date, sex]);
 
   return (
