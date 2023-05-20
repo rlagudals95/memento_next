@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
-import React, { useState, useCallback, useEffect } from "react";
+import router, { useRouter } from "next/router";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import {
   Button,
@@ -19,6 +19,8 @@ import { MessageType, postMessage } from "@/helpers/messageHelper";
 
 const SettingPage = () => {
   const router = useRouter();
+  const nameInputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     if (
       hasUserInfo()
@@ -27,23 +29,38 @@ const SettingPage = () => {
     }
   }, []);
 
+
   const [date, setDate] = useState<Dayjs | null>(dayjs(new Date()));
   const [name, setName] = useState("");
   const [sex, setSex] = useState("");
+
+
 
   const handleChangeDate = useCallback(
     (newValue: Dayjs | null) => {
       setDate(newValue);
     },
-    [date]
+    []
   );
 
   const handleChangeName = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setName(e.target?.value);
+      console.log("setName 이여라 !! ", e.target.value)
+      nameInputRef.current?.focus();
     },
-    [name]
+    []
   );
+
+  const sexList = ["female", "male"];
+
+  const handleChangeSex = useCallback(
+    (e: SelectChangeEvent<string>) => {
+      setSex(e.target.value);
+    },
+    []
+  );
+
 
   const handleClickSubmit = useCallback(async () => {
     if (!date || !name || !sex) {
@@ -60,21 +77,6 @@ const SettingPage = () => {
     router.replace("/MainPage");
   }, [name, date, sex]);
 
-  const sexList = ["female", "male"];
-
-  const handleChangeSex = useCallback(
-    (e: SelectChangeEvent<string>) => {
-      setSex(e.target.value);
-    },
-    [sex]
-  );
-
-  const Container = styled.div`
-    margin: auto 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  `
   return (
     <div className="grid h-screen text-center">
       <Container>
@@ -87,14 +89,16 @@ const SettingPage = () => {
             onChange={handleChangeDate}
             renderInput={(params) => <TextField {...params} />}
           />
+
+
           <TextField
             style={{ marginTop: "10px" }}
             className="w-full"
-            required
-            id="outlined-required"
+            onChange={handleChangeName}
+            value={name}
             label="name"
-            type="text"
             sx={{ width: 300 }}
+            ref={nameInputRef}
           />
 
           <FormControl style={{ marginTop: "10px" }}>
@@ -131,3 +135,11 @@ const SettingPage = () => {
 };
 
 export default SettingPage;
+
+
+const Container = styled.div`
+  margin: auto 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
