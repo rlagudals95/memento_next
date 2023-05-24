@@ -26,6 +26,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.10.14",
     "@mui/x-date-pickers": "^5.0.8",
+    "axios": "^1.4.0",
     "moment": "^2.29.4",
     "next": "^13.0.0",
     "next-seo": "^5.8.0",
