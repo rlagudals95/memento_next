@@ -77,7 +77,6 @@ const SettingPage = () => {
       console.log(`postmessage error ${error}`)
     }
 
-    return
     router.replace("/MainPage");
   }, [name, date, sex]);
 

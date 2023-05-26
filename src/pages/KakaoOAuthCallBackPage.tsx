@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { LoginMethod } from "@apis/authApi";
 import ResponsiveContainer from "@components/web/ResponsiveContainer";
+import { LoginMethod } from "../apis/authApi";
 import { useOauthStore } from "../../store/oauth";
 
 const KakaoOAuthCallBackPage = () => {
