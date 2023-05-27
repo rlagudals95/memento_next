@@ -53,17 +53,19 @@ function SignUpPage() {
 
   const router = useRouter();
 
-  const handleOnClickRequestKakaoAuth = useCallback(() => {
+  const handleClickRequestKakaoAuth = useCallback(() => {
+    
     const config = {
-      client_id: process.env.KAKAO_REST_API_KEY,
-      redirect_uri: process.env.KAKAO_REDIRECT_URI,
+      client_id: process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY,
+      redirect_uri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI,
       response_type: "code",
     };
-
+    
     const queryString = Object.entries(config)
       // @ts-ignore
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join("&");
+    
     window.location.href = `https://kauth.kakao.com/oauth/authorize?${queryString}`;
   }, []);
 
@@ -123,7 +125,7 @@ function SignUpPage() {
               style={{ marginTop: "20px" }}
               className="my-3"
               color="primary"
-              onClick={handleOnClickRequestKakaoAuth}
+              onClick={handleClickRequestKakaoAuth}
             >
               {/* <Logo src={KakaoLogo} /> */}
               카카오로 시작하기
