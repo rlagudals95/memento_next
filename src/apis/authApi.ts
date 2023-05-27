@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-catch */
-import { postMessage } from "@/helpers/messageHelper";
+import { MessageType, postMessage } from "@/helpers/messageHelper";
 import { StatusCodes } from "http-status-codes";
 import { backEndUrl } from "@/constants";
 import AxiosInstance from "./AxiosInstance";
@@ -102,7 +102,7 @@ class AuthApi {
         AxiosInstance.defaults.headers.common.authorization = `Bearer ${result.data.accessToken}`;
         localStorage.setItem("accessToken", `${result.data.accessToken}`);
 
-        postMessage({ accessToken: result.data.accessToken });
+        postMessage({ type: MessageType.auth, body: result.data.accessToken });
       }
 
       return result.data as ILoginResponse;
@@ -162,11 +162,10 @@ class AuthApi {
       const result = await AxiosInstance.post(url, payload);
 
       AxiosInstance.defaults.headers.common.authorization = `Bearer ${result.data.accessToken}`;
-      localStorage.setItem("accessToken", `${result.data.accessToken}`);
-      
+
       // @ts-ignore
-      if (window.ReactNativeWebView) {
-        postMessage({ type: "auth" ,data: result.data.accessToken });
+      if (window?.ReactNativeWebView) {
+        postMessage({ type: MessageType.auth, body: result.data.accessToken });
       }
 
       return result.data.success;
