@@ -10,7 +10,7 @@
     "build-prod": "run-s clean build export",
     "deploy": "next build && next export && aws s3 sync ./out s3://mementomori.prod",
     "clean": "rimraf .next out",
-    "lint": "next lint",
+    "lint": "next lint --fix",
     "check-types": "tsc --noEmit --pretty && tsc --project cypress --noEmit --pretty",
     "test": "jest",
     "commit": "cz",
