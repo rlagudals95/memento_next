@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import { FontSize } from "@/constants/style";
-import SimpleSlider from "@/components.tsx/SimpleSlider";
-import { Button } from "@mui/material";
+import SimpleSlider from "@/components/SimpleSlider";
+import Button from "@/components/Button";
 import { useRouter } from "next/router";
 import { useCallback, useEffect } from "react";
 import { hasUserInfo } from "@/utils/AppConfig";
+import { Color } from "@/constants/Color";
 
 const InitPage = () => {
 
@@ -59,20 +60,22 @@ const InitPage = () => {
         position: 'fixed',
         bottom: '-40px',
         width: '100%',
-        zIndex: 99999,
-        background: 'black',
-        borderRadius: '4px',
+        zIndex: 9999,
+        background: 'white',
         height: 'fit-content'
       }}>
         <Button
-          size={"large"}
-          fullWidth={true}
-          color="primary" 
-          variant="contained"
-          disableElevation
+          styleCustom={{
+            width: "100%",
+            height: "2.7rem",
+            background: "none",
+            border: `1px solid ${Color.GREY_870}`,
+            borderRadius: "6.25rem",
+            margin: "16px 0 0 0",
+          }}
           onClick={handleClickGoSettingPage}
         >
-          mementomori
+          <div style={{ color: "black" }}>mementomori</div>
         </Button>
       </div>
     </SectionWrapper>,

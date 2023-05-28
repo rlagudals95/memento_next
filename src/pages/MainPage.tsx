@@ -1,4 +1,4 @@
-import CountTimer from "@/components.tsx/CountTimer";
+import CountTimer from "@/components/CountTimer";
 
 const MainPage = () => {
   return (

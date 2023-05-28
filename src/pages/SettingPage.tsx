@@ -1,8 +1,7 @@
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import {
-  Button,
   FormControl,
   MenuItem,
   InputLabel,
@@ -16,6 +15,8 @@ import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import styled from "@emotion/styled";
 import { hasUserInfo } from "@/utils/AppConfig";
 import { MessageType, postMessage } from "@/helpers/messageHelper";
+import Button from "../components/Button"
+import { Color } from "@/constants/Color";
 
 const SettingPage = () => {
   const router = useRouter();
@@ -123,13 +124,17 @@ const SettingPage = () => {
             </Select>
           </FormControl>
           <Button
-            style={{ marginTop: "20px" }}
-            className="my-3"
-            color="primary"
+            styleCustom={{
+              width: "100%",
+              height: "2.7rem",
+              background: "none",
+              border: `1px solid ${Color.GREY_870}`,
+              borderRadius: "6.25rem",
+              margin: "16px 0 0 0",
+            }}
             onClick={handleClickSubmit}
-            variant="outlined"
           >
-            mementomori
+            <div style={{color:"black", fontSize: "24px", fontWeight: 700}}>mementomori</div>
           </Button>
         </LocalizationProvider>
       </Container>
