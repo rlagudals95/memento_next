@@ -62,7 +62,8 @@ const InitPage = () => {
         width: '100%',
         zIndex: 9999,
         background: 'white',
-        height: 'fit-content'
+        height: 'fit-content',
+        fontSize: FontSize.Mideum
       }}>
         <Button
           styleCustom={{

@@ -17,6 +17,7 @@ import { hasUserInfo } from "@/utils/AppConfig";
 import { MessageType, postMessage } from "@/helpers/messageHelper";
 import Button from "../components/Button"
 import { Color } from "@/constants/Color";
+import { FontSize } from "@/constants/style";
 
 const SettingPage = () => {
   const router = useRouter();
@@ -134,7 +135,7 @@ const SettingPage = () => {
             }}
             onClick={handleClickSubmit}
           >
-            <div style={{color:"black", fontSize: "24px", fontWeight: 700}}>mementomori</div>
+            <div style={{color: "black", fontSize: FontSize.Mideum, fontWeight: 700}}>mementomori</div>
           </Button>
         </LocalizationProvider>
       </Container>
