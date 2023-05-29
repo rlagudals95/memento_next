@@ -1,19 +1,16 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import ResponsiveContainer from "@components/web/ResponsiveContainer";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+import Container from "@/components/Container";
 import { LoginMethod } from "../apis/authApi";
-import { useOauthStore } from "../../store/oauth";
+import { useOauthStore } from "../store/oauth";
 
 const KakaoOAuthCallBackPage = () => {
-  const { userInfo, OAuthRequest } = useOauthStore();
+  const router = useRouter();
+  const { userInfo, requestOAuth } = useOauthStore();
 
-  const params = new URL(document.URL).searchParams;
-  const code = params.get("code") as string;
+  const fetchUserInfo = async (code: string) => {
 
-  const navigate = useNavigate();
-
-  const fetchUserInfoAndSet = async () => {
-    const loginResult = await OAuthRequest({
+    const loginResult = await requestOAuth({
       loginMethod: LoginMethod.KAKAO,
       code,
     });
@@ -23,23 +20,26 @@ const KakaoOAuthCallBackPage = () => {
         if (window.ReactNativeWebView) {
           postMessage({ accessToken: localStorage.getItem("accessToken") });
         } else {
-          navigate("/");
+          router.replace("SettingPage");
         }
       }
     } else {
-      navigate("/signUpProcessPage");
+      router.replace("/signUpProcessPage");
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
+    const params = new URL(document.URL).searchParams;
+    const code = params.get("code") as string;
+
     if (!code) {
-      navigate("/");
+      router.replace("/");
     }
-    fetchUserInfoAndSet();
+    fetchUserInfo(code);
   }, []);
 
   return (
-    <div>로그인 중 입니다..</div>
+    <Container>로그인 중 입니다..</Container>
   );
 };
 

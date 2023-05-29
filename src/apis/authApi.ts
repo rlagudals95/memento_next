@@ -89,7 +89,7 @@ class AuthApi {
     OAuthRequest: IOauthRequest
   ): Promise<ILoginResponse | IError> {
     try {
-      const url = `https://${backEndUrl()}/ohzig/v1/auth/oauth/${
+      const url = `https://${backEndUrl()}/mementomori/v1/auth/oauth/${
         OAuthRequest.loginMethod
       }?code=${OAuthRequest.code ?? ""}&token=${OAuthRequest.token ?? ""}`;
       const result = await AxiosInstance.get(url);

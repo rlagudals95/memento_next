@@ -139,7 +139,7 @@ function SignUpPage() {
         >
           <ButtonChild>
             <Logo src={`${router.basePath}/kakao-logo.png`} />
-            <p style={{marginLeft: '6px'}}>카카오 로그인</p>
+            <p style={{marginLeft: '6px'}}>카카오로 시작하기</p>
           </ButtonChild>
         </Button>
 
