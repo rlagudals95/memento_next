@@ -12,12 +12,12 @@ import TextField from "@mui/material/TextField";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
-import styled from "@emotion/styled";
 import { hasUserInfo } from "@/utils/AppConfig";
 import { MessageType, postMessage } from "@/helpers/messageHelper";
 import Button from "../components/Button"
 import { Color } from "@/constants/Color";
 import { FontSize } from "@/constants/style";
+import Container from "@/components/Container";
 
 const SettingPage = () => {
   const router = useRouter();
@@ -145,10 +145,3 @@ const SettingPage = () => {
 
 export default SettingPage;
 
-
-const Container = styled.div`
-  margin: auto 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`

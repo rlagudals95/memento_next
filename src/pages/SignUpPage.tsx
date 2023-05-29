@@ -4,8 +4,9 @@ import React, { useCallback } from "react";
 // import NaverLogo from "@images/naver-logo.png";
 // import CloseIcon from "@images/pictogram-line-close.svg";
 import styled from "@emotion/styled";
-import { Button } from "@mui/material";
+import Button from "@/components/Button";
 import { useRouter } from "next/router";
+import Container from "@/components/Container";
 import KakaoLogo from "../images/kakao-logo.png";
 import { Color } from "../constants/Color";
 
@@ -49,23 +50,29 @@ const ButtonsContainer = styled.div`
   margin-top: 15rem;
 `;
 
+const ButtonChild = styled.div`
+  display: flex;
+  justify-content: space-between;
+  color: ${Color.BLACK};
+`
+
 function SignUpPage() {
 
   const router = useRouter();
 
   const handleClickRequestKakaoAuth = useCallback(() => {
-    
+
     const config = {
       client_id: process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY,
       redirect_uri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI,
       response_type: "code",
     };
-    
+
     const queryString = Object.entries(config)
       // @ts-ignore
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join("&");
-    
+
     window.location.href = `https://kauth.kakao.com/oauth/authorize?${queryString}`;
   }, []);
 
@@ -111,40 +118,46 @@ function SignUpPage() {
   };
 
   return (
-    <div className="bg-secondary-1 flex items-center min-h-screen bg-white">
-      <div className="container max-w-screen-lg xl:max-w-screen-xl mx-auto">
-        <div className="mx-auto my-1 items-center flex flex-col justify-center">
-          <ButtonsContainer>
-            {/* <Button
+    <Container>
+      <ButtonsContainer>
+        {/* <Button
               onClick={handleOnClickRequestNaverAuth}
             >
               <Logo src={NaverLogo} />
               <ButtonInfo>네이버로 시작하기</ButtonInfo>
             </Button> */}
-            <Button
-              style={{ marginTop: "20px" }}
-              className="my-3"
-              color="primary"
-              onClick={handleClickRequestKakaoAuth}
-            >
-              {/* <Logo src={KakaoLogo} /> */}
-              카카오로 시작하기
-            </Button>
+        <Button
+          styleCustom={{
+            width: "100%",
+            height: "2.7rem",
+            background: "none",
+            border: `1px solid ${Color.GREY_870}`,
+            borderRadius: "6.25rem",
+            margin: "16px 0 0 0",
 
-            {/* <Button
+          }}
+          onClick={handleClickRequestKakaoAuth}
+        >
+          <ButtonChild>
+            <Logo src={KakaoLogo} />
+            카카오로 시작하기
+          </ButtonChild>
+        </Button>
+
+        {/* <Button
   
               onClick={handleOnClickRequestAppleAuth}
             >
               <Logo src={AppleLogo} />
               <ButtonInfo>Apple로 시작하기</ButtonInfo>
             </Button> */}
-            {/* <Button
+        {/* <Button
               onClick={handleOnClickGoMain}
             >
               <ButtonInfo margin={"0"}>로그인없이 일단 둘러보기</ButtonInfo>
             </Button> */}
 
-            {/* <Button
+        {/* <Button
               styleCustom={{
                 background: "",
                 margin: "1.9rem 0 0 0",
@@ -154,10 +167,8 @@ function SignUpPage() {
             >
               <InquiryButtonInfo>로그인에 문제가 있으신가요?</InquiryButtonInfo>
             </Button> */}
-          </ButtonsContainer>
-        </div>
-      </div>
-    </div>
+      </ButtonsContainer>
+    </Container>
   );
 }
 
