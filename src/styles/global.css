@@ -25,40 +25,6 @@ a:hover {
   @apply my-6;
 }
 
-/*DragCarousel.scss*/
-.card-wrap  {
-  display: flex; /* div가 가로방향*/
-  overflow-x: scroll; /* div에 가로 스크롤을 줘서 옆으로 길게 보이게함*/
-}
-
-.dots {
-  position: absolute;
-  bottom: 50px;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  background: gray;
-  border-radius: 50%;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-.active-dot {
-  background: #3f3f3f;
-  cursor: default;
-}
-
-/*overflow-x와 함께오는 scroll bar 제거*/
-.card-wrap::-webkit-scrollbar {
-  display: none;
-}
-
 .position-absolute-bottom {
   position: 'fixed';
   bottom: '20px';

@@ -54,6 +54,7 @@ const ButtonChild = styled.div`
   display: flex;
   justify-content: space-between;
   color: ${Color.BLACK};
+  font-weight: 700;
 `
 
 function SignUpPage() {
@@ -130,17 +131,15 @@ function SignUpPage() {
           styleCustom={{
             width: "100%",
             height: "2.7rem",
-            background: "none",
-            border: `1px solid ${Color.GREY_870}`,
+            background: Color.KAKAO,
             borderRadius: "6.25rem",
-            margin: "16px 0 0 0",
-
+            margin: "16px 0 0 0"
           }}
           onClick={handleClickRequestKakaoAuth}
         >
           <ButtonChild>
-            <Logo src={KakaoLogo} />
-            카카오로 시작하기
+            <Logo src={`${router.basePath}/kakao-logo.png`} />
+            <p style={{marginLeft: '6px'}}>카카오 로그인</p>
           </ButtonChild>
         </Button>
 
