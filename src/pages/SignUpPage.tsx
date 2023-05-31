@@ -7,19 +7,19 @@ import styled from "@emotion/styled";
 import Button from "@/components/Button";
 import { useRouter } from "next/router";
 import Container from "@/components/Container";
-import KakaoLogo from "../images/kakao-logo.png";
+import Title from "@/components/Title";
 import { Color } from "../constants/Color";
 
-const Title = styled.div`
-  font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 150%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: -0.6px;
-  color: ${Color.GREY_870};
-`;
+// const Title = styled.div`
+//   font-weight: 700;
+//   font-size: 1.5rem;
+//   line-height: 150%;
+//   display: flex;
+//   align-items: center;
+//   text-align: center;
+//   letter-spacing: -0.6px;
+//   color: ${Color.GREY_870};
+// `;
 
 const Logo = styled.img<any>`
   width: 24px;
@@ -120,6 +120,7 @@ function SignUpPage() {
 
   return (
     <Container>
+      <Title title={"mementomori"}/>
       <ButtonsContainer>
         {/* <Button
               onClick={handleOnClickRequestNaverAuth}
