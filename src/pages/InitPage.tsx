@@ -76,7 +76,7 @@ const InitPage = () => {
           }}
           onClick={handleClickGoSettingPage}
         >
-          <div style={{ color: "black" }}>mementomori</div>
+          <p>mementomori</p>
         </Button>
       </div>
     </SectionWrapper>,

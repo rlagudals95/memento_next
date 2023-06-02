@@ -9,6 +9,7 @@ interface StyleCustom {
   background?: string;
   color?: string;
   hoverColor?: string;
+  hoverBackgroundColor?: string;
   activeColor?: string;
   disabledColor?: string;
   disabledFontColor?: string;
@@ -26,7 +27,7 @@ interface StyleCustom {
 const ButtonWrapper = styled.button<any>`
   background: ${(props) =>
     props.styleCustom?.background ?? Color.GREY_870};
-  color: ${(props) => props.styleCustom?.color ?? "white"};
+  color: ${(props) => props.styleCustom?.color ?? Color.GREY_900};
   border-radius: ${(props) => props.styleCustom?.borderRadius ?? "0.5rem"};
   border: ${(props) => props.styleCustom?.border ?? ""};
   align-items: center;
@@ -42,9 +43,11 @@ const ButtonWrapper = styled.button<any>`
   justify-content: center;
   opacity: ${(props) => props.styleCustom?.opacity ?? "1"};
   padding: 0px;
+  fonteight: 700;
 
   &:hover {
-    background-color: ${(props) => props.styleCustom?.hoverColor ?? ""};
+    background-color: ${(props) => props.styleCustom?.hoverBackgroundColor ??  Color.GREY_900};
+    color: ${(props) => props.styleCustom?.hoverColor ?? Color.WHITE} !important;
   }
   &:active {
     background-color: ${(props) => props.styleCustom?.activeColor ?? ""};
