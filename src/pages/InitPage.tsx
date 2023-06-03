@@ -42,9 +42,8 @@ const InitPage = () => {
         name: messageBody.name,
         sex: messageBody.sex
       })
+      router.replace("/MainPage");
     }
-    router.replace("/MainPage");
-
   }, [])
 
 
