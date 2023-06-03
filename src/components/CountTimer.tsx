@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import { FontSize } from "@/constants/style";
 import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
 import { removeUserInfo } from "@/utils/AppConfig";
-
+import { useUserStore } from "@/store";
 
 const Container = styled.div`
   display: flex;
@@ -36,22 +36,24 @@ const Birthday = styled.div`
 
 const CountTimer = () => {
   const router = useRouter();
+  const { userInfo } = useUserStore();
+
   const [lifeSeconds, setLifeSeconds] = useState(0);
-  const [name, setName] = useState(localStorage.getItem('name') || null)
-  const [birthday, setBirthDay] = useState(localStorage.getItem("birthday" || null));
 
   const lifeExpectancy = useCallback(() => {
+
+    const birthday = userInfo?.birthday;
+
     if (!birthday) {
       router.replace("/");
       return
     }
     const lifeExpectancyBySex =
-      localStorage.getItem("sex") === SEX.FEMALE ? 80 : 83;
+      userInfo.sex === SEX.FEMALE ? 80 : 83;
 
     // 기대 수명
     const lifeExpectancyDate =
-      `${String(parseInt(birthday?.substring(0, 4), 10) + lifeExpectancyBySex)}${ 
-      String(birthday?.substr(4, 8))}`;
+      `${String(parseInt(birthday?.substring(0, 4), 10) + lifeExpectancyBySex)}${String(birthday?.substr(4, 8))}`;
 
     const lifeExpectancySeconds = new Date(lifeExpectancyDate).getTime() / 1000;
 
@@ -62,12 +64,13 @@ const CountTimer = () => {
     const _livedSeconds = lifeExpectancySeconds - now;
 
     setLifeSeconds(_livedSeconds);
-  }, []);
+  }, [userInfo]);
 
   useEffect(() => {
-    // @TODO 백엔드 통신으로 모두 변경하자
-    lifeExpectancy();
-
+    if (userInfo?.birthday) {
+      // @TODO 백엔드 통신으로 모두 변경하자
+      lifeExpectancy();
+    }
     const myInterval = setInterval(() => {
       setLifeSeconds((lifeSeconds) => lifeSeconds - 1);
     }, 1000);
@@ -75,20 +78,19 @@ const CountTimer = () => {
     return () => {
       clearInterval(myInterval);
     };
-  }, []);
+  }, [userInfo]);
 
 
   const handleClickReset = useCallback(() => {
-    // @TODO 서버 로직으로 변경할거 예요~
     removeUserInfo();
     router.replace("/SettingPage");
   }, [])
 
   return (
     <Container>
-      <Name>{name}님의 남은 시간</Name>
+      <Name>{userInfo.name}님의 남은 시간</Name>
       <LifeExpectancy>{lifeSeconds}</LifeExpectancy>
-      <Birthday>{birthday}</Birthday>
+      <Birthday>{userInfo.birthday}</Birthday>
       <SettingsBackupRestoreIcon onClick={handleClickReset} style={{ marginTop: '50px' }} sx={{ fontSize: 35 }} />
     </Container>
   );

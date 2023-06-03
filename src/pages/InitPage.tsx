@@ -3,9 +3,11 @@ import { FontSize } from "@/constants/style";
 import SimpleSlider from "@/components/SimpleSlider";
 import Button from "@/components/Button";
 import { useRouter } from "next/router";
-import { useCallback, useEffect } from "react";
-import { hasUserInfo } from "@/utils/AppConfig";
+import { useCallback, useEffect, useState } from "react";
+import { getUserInfoFromAsyncStorage } from "@/utils/AppConfig";
 import { Color } from "@/constants/Color";
+import { IUserInfo, useUserStore } from "@/store";
+import { MessageType, postMessage } from "@/helpers/messageHelper";
 
 const InitPage = () => {
 
@@ -27,12 +29,42 @@ const InitPage = () => {
   `
 
   const router = useRouter();
+  const { setUserInfo } = useUserStore();
+
+  const onMessageHandler = useCallback((e: any) => {
+
+    const response = JSON.parse(e.data);
+    const messageBody = response.body;
+
+    if (messageBody?.birthday) {
+      setUserInfo({
+        birthday: messageBody?.birthday,
+        name: messageBody.name,
+        sex: messageBody.sex
+      })
+    }
+    router.replace("/MainPage");
+
+  }, [])
+
 
   useEffect(() => {
-    if (
-      hasUserInfo()
-    ) {
-      router.replace("/MainPage");
+    postMessage({ type: MessageType.hasUserInfo });
+  }, []);
+
+  useEffect(() => {
+    const isUIWebView = () => {
+      return navigator.userAgent
+        .toLowerCase()
+        .match(/\(ip.*applewebkit(?!.*(version|crios))/)
+    }
+
+    const receiver = isUIWebView() ? window : document
+
+    receiver.addEventListener('message', onMessageHandler)
+
+    return () => {
+      receiver.removeEventListener('message', onMessageHandler)
     }
   }, [])
 

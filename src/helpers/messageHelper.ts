@@ -2,11 +2,14 @@ import { getOs, OS } from "./osHelper";
 
 export interface MessagePacket {
   type: MessageType;
-  body: any;
+  body?: any;
 }
 
 export enum MessageType {
   auth = "auth",
+  hasUserInfo = "hasUserInfo",
+  setUserInfo = "setUserInfo",
+  removeUserINfo = "removeUserInfo"
 }
 
 export const onMessage = (e: MessageEvent) => {
@@ -19,6 +22,7 @@ export const onMessage = (e: MessageEvent) => {
       break;
   }
 };
+
 
 export const postMessage = (message: MessagePacket) => {
   if (getOs() === OS.ANDROID) {

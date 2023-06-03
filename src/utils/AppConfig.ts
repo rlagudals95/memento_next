@@ -1,3 +1,6 @@
+import { MessageType, postMessage } from "@/helpers/messageHelper";
+import { IUserInfo } from "@/store/user";
+
 export const AppConfig = {
   site_name: "Starter",
   title: "Nextjs Starter",
@@ -15,7 +18,5 @@ export const hasUserInfo = () => {
 };
 
 export const removeUserInfo = () => {
-  localStorage.removeItem('name');
-  localStorage.removeItem('birthday');
-  localStorage.removeItem('sex');
+  postMessage({type: MessageType.removeUserINfo})
 };
