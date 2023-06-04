@@ -3,11 +3,12 @@ import { FontSize } from "@/constants/style";
 import SimpleSlider from "@/components/SimpleSlider";
 import Button from "@/components/Button";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { getUserInfoFromAsyncStorage } from "@/utils/AppConfig";
 import { Color } from "@/constants/Color";
 import { IUserInfo, useUserStore } from "@/store";
 import { MessageType, postMessage } from "@/helpers/messageHelper";
+
 
 const InitPage = () => {
 
