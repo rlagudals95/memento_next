@@ -38,9 +38,19 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/public/*": ["./public/*"]
+      "@/public/*": ["./public/*"],
+      "@/constants/*": ["./src/constants/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/elements/*": ["./src/elements/*"],
+      "@/helpers/*": ["./src/helpers/*"],
+      "@/layouts/*": ["./src/layouts/*"],
+      "@/templates/*": ["./src/templates/*"],
+      "@/images/*": ["./src/images/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/store/*": ["./src/store/*"]
     }
   },
   "exclude": ["./out/**/*", "./node_modules/**/*", "**/*.cy.ts"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
