@@ -13,7 +13,7 @@ export enum MessageType {
 }
 
 export const onMessage = (e: MessageEvent) => {
-  const { type, data } = JSON.parse(e.data);
+  const { type } = JSON.parse(e.data);
 
   switch (type) {
     case MessageType.auth:
@@ -39,7 +39,7 @@ export const isMobile = (): boolean => {
 
 export const postMessage = (message: MessagePacket) => {
   if(!isMobile()) return;
-  
+
   if (getOs() === OS.ANDROID) {
     // @ts-ignore
     document.ReactNativeWebView.postMessage(JSON.stringify(message));
