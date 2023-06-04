@@ -126,7 +126,7 @@ const SettingPage = () => {
             }}
             onClick={handleClickSubmit}
           >
-            <p>mementomori</p>
+            <p style={{fontWeight: 700}}>mementomori</p>
           </Button>
         </LocalizationProvider>
       </Container>

@@ -107,7 +107,7 @@ const InitPage = () => {
           }}
           onClick={handleClickGoSettingPage}
         >
-          <p>mementomori</p>
+          <p style={{fontWeight: 700}}>mementomori</p>
         </Button>
       </div>
     </SectionWrapper>,
