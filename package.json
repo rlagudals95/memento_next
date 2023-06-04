@@ -2,10 +2,10 @@
   "name": "next-js-boilerplate",
   "version": "3.0.0",
   "scripts": {
+    "start": "next start",
     "dev": "next dev",
     "build": "cross-env NODE_ENV=production next build && next export",
     "build:dev": "cross-env NODE_ENV=development next build && next export",
-    "start": "next start",
     "build-stats": "cross-env ANALYZE=true npm run build",
     "export": "next export",
     "deploy": "next build && next export && aws s3 sync ./out s3://mementomori.prod",
