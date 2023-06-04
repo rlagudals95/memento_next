@@ -1,5 +1,3 @@
-import document from "next/document";
-
 export enum OS {
   ANDROID = "ANDROID",
   IOS = "IOS",

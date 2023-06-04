@@ -27,6 +27,7 @@
     "@mui/material": "^5.10.14",
     "@mui/x-date-pickers": "^5.0.8",
     "axios": "^1.4.0",
+    "dayjs": "^1.11.8",
     "http-status-codes": "^2.2.0",
     "moment": "^2.29.4",
     "next": "^13.0.0",

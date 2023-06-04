@@ -40,7 +40,7 @@ const CountTimer = () => {
 
   const [lifeSeconds, setLifeSeconds] = useState(0);
 
-  const lifeExpectancy = useCallback(() => {
+  const getLifeExpectancy = useCallback(() => {
 
     const birthday = userInfo?.birthday;
 
@@ -61,17 +61,18 @@ const CountTimer = () => {
     const now = Math.floor(new Date().getTime() / 1000);
 
     // 남은 수명
-    const _livedSeconds = lifeExpectancySeconds - now;
+    const livedSeconds = lifeExpectancySeconds - now;
 
-    setLifeSeconds(_livedSeconds);
+    setLifeSeconds(livedSeconds);
   }, [userInfo]);
 
   useEffect(() => {
     if (userInfo?.birthday) {
       // @TODO 백엔드 통신으로 모두 변경하자
-      lifeExpectancy();
+      getLifeExpectancy();
     }
     const myInterval = setInterval(() => {
+      // eslint-disable-next-line @typescript-eslint/no-shadow
       setLifeSeconds((lifeSeconds) => lifeSeconds - 1);
     }, 1000);
 
