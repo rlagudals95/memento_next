@@ -27,24 +27,24 @@ const Logo = styled.img<any>`
   object-fit: fit;
 `;
 
-const ButtonInfo = styled.div<{ margin?: string }>`
-  margin: ${(props) => props.margin ?? "auto 0 auto 0.5rem"};
-  align-items: center;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.5rem;
-  letter-spacing: -0.02em;
-`;
+// const ButtonInfo = styled.div<{ margin?: string }>`
+//   margin: ${(props) => props.margin ?? "auto 0 auto 0.5rem"};
+//   align-items: center;
+//   text-align: center;
+//   font-size: 1rem;
+//   font-weight: 700;
+//   line-height: 1.5rem;
+//   letter-spacing: -0.02em;
+// `;
 
-const InquiryButtonInfo = styled.div`
-  font-size: 0.875rem;
-  line-height: 1.5rem;
-  text-align: center;
-  letter-spacing: -0.6px;
-  text-decoration-line: underline;
-  color: ${Color.GREY_500};
-`;
+// const InquiryButtonInfo = styled.div`
+//   font-size: 0.875rem;
+//   line-height: 1.5rem;
+//   text-align: center;
+//   letter-spacing: -0.6px;
+//   text-decoration-line: underline;
+//   color: ${Color.GREY_500};
+// `;
 
 const ButtonsContainer = styled.div`
   margin-top: 15rem;

@@ -3,11 +3,11 @@ import { FontSize } from "@/constants/style";
 import SimpleSlider from "@/components/SimpleSlider";
 import Button from "@/components/Button";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
-import { getUserInfoFromAsyncStorage } from "@/utils/AppConfig";
+import React, { useCallback, useEffect } from "react";
 import { Color } from "@/constants/Color";
-import { IUserInfo, useUserStore } from "@/store";
+import { useUserStore } from "@/store";
 import { MessageType, postMessage } from "@/helpers/messageHelper";
+
 
 const InitPage = () => {
 
@@ -107,7 +107,7 @@ const InitPage = () => {
           }}
           onClick={handleClickGoSettingPage}
         >
-          <p>mementomori</p>
+          <p style={{fontWeight: 700}}>mementomori</p>
         </Button>
       </div>
     </SectionWrapper>,

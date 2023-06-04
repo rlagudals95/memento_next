@@ -1,5 +1,3 @@
-import document from "next/document";
-
 export enum OS {
   ANDROID = "ANDROID",
   IOS = "IOS",
@@ -15,9 +13,11 @@ export const getOs = (): OS => {
   return OS.IOS;
 };
 
-export const messageReceiver = () => {
+export const messageReceiver = (userAgent?: string) => {
+
+  const agent = userAgent ?? navigator.userAgent;
   const isUIWebView = () => {
-    return navigator.userAgent
+    return agent
       .toLowerCase()
       .match(/\(ip.*applewebkit(?!.*(version|crios))/)
   }

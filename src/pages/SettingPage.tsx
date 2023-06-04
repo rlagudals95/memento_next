@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useState, useCallback, useEffect, useRef } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import {
   FormControl,
@@ -13,11 +13,11 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { MessageType, postMessage } from "@/helpers/messageHelper";
-import Button from "../components/Button"
 import { Color } from "@/constants/Color";
 import Container from "@/components/Container";
 import { useUserStore } from "@/store";
 import { SEX } from "@/constants";
+import Button from "../components/Button"
 
 const SettingPage = () => {
   const router = useRouter();
@@ -49,7 +49,7 @@ const SettingPage = () => {
 
   const handleChangeSex = useCallback(
     (e: SelectChangeEvent<SEX>) => {
-      //@ts-ignore
+      // @ts-ignore
       setSex(e.target.value);
     },
     []
@@ -68,7 +68,7 @@ const SettingPage = () => {
 
       router.replace("/MainPage");
     } catch (error) {
-      console.log(`postmessage error ${error}`)
+      console.error(`postmessage error ${error}`)
       alert('정보등록에 실패했습니다!');
     }
 
@@ -126,7 +126,7 @@ const SettingPage = () => {
             }}
             onClick={handleClickSubmit}
           >
-            <p>mementomori</p>
+            <p style={{fontWeight: 700}}>mementomori</p>
           </Button>
         </LocalizationProvider>
       </Container>

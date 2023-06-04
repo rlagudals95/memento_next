@@ -1,6 +1,5 @@
 import { Meta } from "@/layouts/Meta";
 import { Main } from "@/templates/Main";
-import SettingPage from "./SettingPage";
 import InitPage from "./InitPage"
 
 const Index = () => {

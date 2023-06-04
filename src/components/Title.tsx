@@ -2,7 +2,6 @@ import React, { useCallback, memo } from "react";
 import styled from "@emotion/styled";
 import { Color } from "@/constants/Color";
 import { useRouter } from "next/router";
-// import Logo from "../svg/studio_logo.svg";
 
 interface IProps {
   title: string;
@@ -13,13 +12,6 @@ const TitleContainer = styled.div`
   // padding: 0px 24px;
   display: flex;
   justify-content: center;
-`;
-
-const LogoWrapper = styled.div`
-  width: 215px;
-  height: 27px;
-  margin-bottom: 80px;
-  cursor: pointer;
 `;
 
 const TitleWrapper = styled.div`
@@ -61,9 +53,6 @@ const Title = (props: IProps) => {
 
   return (
     <TitleContainer onClick={goMain}>
-      {/* <LogoWrapper>
-        <img src={Logo} alt="로고" title="로고" />
-      </LogoWrapper> */}
       <TitleWrapper color={Color.BLACK}>{title}</TitleWrapper>
       {description && (
         <DescWrapper color={Color.BLACK}>{description}</DescWrapper>
