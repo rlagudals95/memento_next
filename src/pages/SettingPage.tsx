@@ -104,6 +104,7 @@ const SettingPage = () => {
               id="demo-simple-select-helper"
               value={sex}
               label="sex"
+              style={{textAlign: "left"}}
               onChange={handleChangeSex}
             >
               {Array.from(sexList).map((item) => {
