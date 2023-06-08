@@ -40,11 +40,7 @@ export const isMobile = (): boolean => {
 export const postMessage = (message: MessagePacket) => {
   if(!isMobile()) return;
 
-  if (getOs() === OS.ANDROID) {
-    // @ts-ignore
-    document.ReactNativeWebView.postMessage(JSON.stringify(message));
-  } else {
-    // @ts-ignore
-    window.ReactNativeWebView.postMessage(JSON.stringify(message));
-  }
+  // @ts-ignore
+  window.ReactNativeWebView.postMessage(JSON.stringify(message));
+  
 };
