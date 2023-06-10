@@ -7,7 +7,7 @@ import React, { useCallback, useEffect } from "react";
 import { Color } from "@/constants/Color";
 import { useUserStore } from "@/store";
 import { MessageType, postMessage } from "@/helpers/messageHelper";
-
+import { FontGraphicChange } from "@/elements/FontGraphicChange";
 
 const InitPage = () => {
 
@@ -78,6 +78,10 @@ const InitPage = () => {
   `
 
   const sectionList: React.ReactNode[] = [
+    // eslint-disable-next-line react/jsx-key
+    <SectionWrapper className="fade-in">
+      <FontGraphicChange/>
+    </SectionWrapper>,
     // eslint-disable-next-line react/jsx-key
     <SectionWrapper className="fade-in">죽음이 멀리 있고 대수롭지 않은 것으로 느껴질 때에는 우리 삶은 게을러져.<br />
       하지만 언제라도 죽음과 만나리라는 것을 알았을 때 인간은 보다 나은 삶을 살아갈 수 있지.</SectionWrapper>,
