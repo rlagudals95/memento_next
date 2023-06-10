@@ -75,7 +75,7 @@ const SettingPage = () => {
   }, [name, date, sex]);
 
   return (
-    <div className="grid h-screen text-center">
+    <div className="fade-in grid h-screen text-center">
       <Container>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <MobileDatePicker

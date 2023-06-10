@@ -2,7 +2,7 @@ import CountTimer from "@/components/CountTimer";
 
 const MainPage = () => {
   return (
-    <div className="grid h-screen place-items-center">
+    <div className="fade-in grid h-screen place-items-center">
       <CountTimer />
     </div>
   );
