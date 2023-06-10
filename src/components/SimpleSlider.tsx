@@ -14,9 +14,17 @@ const SimpleSlider = (props: IProps) => {
   `
 
   return (
-    <Container> 
+    <Container>
       {/* @TODO - IndicatorIcon 흥미롭게 */}
-      <Carousel navButtonsAlwaysVisible={false} fullHeightHover={true} cycleNavigation={false} navButtonsAlwaysInvisible={false} height={'700px'} autoPlay={false} swipe={true} animation={'slide'}>
+      <Carousel 
+        navButtonsAlwaysVisible={false}
+        fullHeightHover={true} 
+        strictIndexing={true}
+        navButtonsAlwaysInvisible={false} 
+        height={'700px'} autoPlay={false} 
+        swipe={true} 
+        animation={'slide'}
+      >
         {children}
       </Carousel>
     </Container>
