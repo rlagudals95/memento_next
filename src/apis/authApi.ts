@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-catch */
 import { MessageType, postMessage } from "@/helpers/messageHelper";
 import { StatusCodes } from "http-status-codes";
-import { backEndUrl } from "@/constants";
+import { backEndHost } from "@/constants";
 import AxiosInstance from "./AxiosInstance";
 
 export interface ILoginRequest {
@@ -73,7 +73,7 @@ class AuthApi {
     payload: ILoginRequest
   ): Promise<ILoginResponse | IError> {
     try {
-      const url = `https://${backEndUrl()}/ohzig/v1/auth/issue`;
+      const url = `https://${backEndHost()}/mamentomori/v1/auth/issue`;
       const result = await AxiosInstance.post(url, payload);
 
       if (result.status !== StatusCodes.OK) {
@@ -89,7 +89,7 @@ class AuthApi {
     OAuthRequest: IOauthRequest
   ): Promise<ILoginResponse | IError> {
     try {
-      const url = `https://${backEndUrl()}/mementomori/v1/auth/oauth/${
+      const url = `https://${backEndHost()}/mementomori/v1/auth/oauth/${
         OAuthRequest.loginMethod
       }?code=${OAuthRequest.code ?? ""}&token=${OAuthRequest.token ?? ""}`;
       const result = await AxiosInstance.get(url);
@@ -113,7 +113,7 @@ class AuthApi {
 
   public static async refreshToken(): Promise<IRefreshResponse | IError> {
     try {
-      const url = `https://${backEndUrl()}/ohzig/v1/auth/refresh`;
+      const url = `https://${backEndHost()}/mamentomori/v1/auth/refresh`;
       const result = await AxiosInstance.post(url);
 
       if (result.status !== StatusCodes.OK) {
@@ -132,7 +132,7 @@ class AuthApi {
     payload: ISendPhoneRequest
   ): Promise<ISendPhoneResponse> {
     try {
-      const url = `https://${backEndUrl()}/ohzig/v1/auth/sms/send`;
+      const url = `https://${backEndHost()}/mamentomori/v1/auth/sms/send`;
       const result = await AxiosInstance.post(url, payload);
       if (result.status !== StatusCodes.OK) {
         console.error(`Axios error status: ${result.status}`);
@@ -145,7 +145,7 @@ class AuthApi {
 
   public static async verifySms(payload: IVerifySmsRequest): Promise<boolean> {
     try {
-      const url = `https://${backEndUrl()}/ohzig/v1/auth/sms/verify`;
+      const url = `https://${backEndHost()}/mamentomori/v1/auth/sms/verify`;
       const result = await AxiosInstance.post(url, payload);
 
       return result.data.success;
@@ -158,7 +158,7 @@ class AuthApi {
     payload: IAgreementRequest
   ): Promise<ILoginResponse> {
     try {
-      const url = `https://${backEndUrl()}/ohzig/v1/auth/agreement`;
+      const url = `https://${backEndHost()}/mamentomori/v1/auth/agreement`;
       const result = await AxiosInstance.post(url, payload);
 
       AxiosInstance.defaults.headers.common.authorization = `Bearer ${result.data.accessToken}`;
@@ -176,7 +176,7 @@ class AuthApi {
 
   public static async getTempUserInfo(): Promise<ITempUserInfo> {
     try {
-      const url = `https://${backEndUrl()}/ohzig/v1/users/temp`;
+      const url = `https://${backEndHost()}/mamentomori/v1/users/temp`;
       const result = await AxiosInstance.get(url);
 
       return result.data;
@@ -189,7 +189,7 @@ class AuthApi {
     payload: ITempUserInfo
   ): Promise<boolean> {
     try {
-      const url = `https://${backEndUrl()}/ohzig/v1/users/temp`;
+      const url = `https://${backEndHost()}/mamentomori/v1/users/temp`;
       const result = await AxiosInstance.post(url, payload);
 
       return result.data;

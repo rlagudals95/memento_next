@@ -47,8 +47,8 @@ const ButtonWrapper = styled.button<any>`
   fonteight: 700;
   
   &:hover {
-    background-color: ${(props) => (props.styleCustom?.hoverBackgroundColor && props.hasHoverEffect) ?? Color.GREY_900};
-    color: ${(props) => (props.styleCustom?.hoverColor && props.hasHoverEffect) ?? Color.WHITE} !important;
+    background-color: ${(props) => (props.styleCustom?.hoverBackgroundColor && props.styleCustom.hasHoverEffect) ?? Color.GREY_900};
+    color: ${(props) => (props.styleCustom?.hoverColor && props.styleCustom.hasHoverEffect) ?? Color.WHITE} !important;
   }
   
 

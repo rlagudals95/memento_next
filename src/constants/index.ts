@@ -6,14 +6,13 @@ export enum EnvType {
   PROD = "production"
 }
 
-export const backEndUrl = () => {
+export const backEndHost = () => {
   if (process.env.NODE_ENV === EnvType.PROD) {
-    return "https://api-prod.com/";
+    return "https://api-prod.com";
   } if (process.env.NODE_ENV === EnvType.DEV) {
-    return "https://api-dev.com/";
+    return "https://api-dev.com";
   } 
-    return "http://localhost:7777s";
-  
+    return "http://localhost:3001";
 };
 
 
