@@ -58,5 +58,6 @@
     "**/*.tsx",
     "src/elements/FontGraphicChange.js",
     "src/elements/FontGraphicChange.js"
-  ]
+  ],
+  "plugins": [{ "name": "typescript-plugin-css-modules" }]
 }

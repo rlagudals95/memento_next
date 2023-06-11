@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import Container from "@/components/Container";
+import { Loading } from "@/elements/Loading";
 import { LoginMethod } from "../apis/authApi";
 import { useOauthStore } from "../store/oauth";
 
@@ -9,13 +10,12 @@ const KakaoOAuthCallBackPage = () => {
   const { requestOAuth } = useOauthStore();
 
   const fetchUserInfo = async (code: string) => {
-
     const loginResult = await requestOAuth({
       loginMethod: LoginMethod.KAKAO,
       code,
     });
-    return;
-    console.log("loginResult : ",loginResult)
+
+    console.log("loginResult : ", loginResult)
     if (loginResult.registeredUser) {
       if (localStorage.getItem("accessToken")) {
         // @ts-ignore
@@ -31,6 +31,7 @@ const KakaoOAuthCallBackPage = () => {
   };
 
   useEffect(() => {
+    return;
     const params = new URL(document.URL).searchParams;
     const code = params.get("code") as string;
 
@@ -41,7 +42,7 @@ const KakaoOAuthCallBackPage = () => {
   }, []);
 
   return (
-    <Container>로그인 중 입니다..</Container>
+    <Container><Loading /></Container>
   );
 };
 
