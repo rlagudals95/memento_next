@@ -21,8 +21,6 @@ export const FontGraphicChange = () => {
       "Should",
       "Die",
       "Mementomori",
-      "By",
-      "hmk1995",
       ":)",
     ];
 
