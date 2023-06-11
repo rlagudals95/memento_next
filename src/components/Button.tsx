@@ -21,6 +21,7 @@ interface StyleCustom {
   activeFontColor?: string;
   border?: string;
   opacity?: string;
+  hasHoverEffect?: boolean;
 }
 
 
@@ -44,11 +45,13 @@ const ButtonWrapper = styled.button<any>`
   opacity: ${(props) => props.styleCustom?.opacity ?? "1"};
   padding: 0px;
   fonteight: 700;
-
+  
   &:hover {
-    background-color: ${(props) => props.styleCustom?.hoverBackgroundColor ??  Color.GREY_900};
-    color: ${(props) => props.styleCustom?.hoverColor ?? Color.WHITE} !important;
+    background-color: ${(props) => (props.styleCustom?.hoverBackgroundColor && props.hasHoverEffect) ?? Color.GREY_900};
+    color: ${(props) => (props.styleCustom?.hoverColor && props.hasHoverEffect) ?? Color.WHITE} !important;
   }
+  
+
   &:active {
     background-color: ${(props) => props.styleCustom?.activeColor ?? ""};
     color: ${(props) => props.styleCustom?.activeFontColor ?? ""};

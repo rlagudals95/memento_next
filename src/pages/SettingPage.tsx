@@ -124,6 +124,7 @@ const SettingPage = () => {
               border: `1px solid ${Color.GREY_870}`,
               borderRadius: "6.25rem",
               margin: "16px 0 0 0",
+              hasHoverEffect: true
             }}
             onClick={handleClickSubmit}
           >

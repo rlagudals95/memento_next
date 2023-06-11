@@ -8,6 +8,7 @@ import Button from "@/components/Button";
 import { useRouter } from "next/router";
 import Container from "@/components/Container";
 import Title from "@/components/Title";
+import { FontGraphicChange } from "@/elements/FontGraphicChange";
 import { Color } from "../constants/Color";
 
 // const Title = styled.div`
@@ -120,7 +121,7 @@ function SignUpPage() {
 
   return (
     <Container>
-      <Title title={"mementomori"}/>
+      <FontGraphicChange/>
       <ButtonsContainer>
         {/* <Button
               onClick={handleOnClickRequestNaverAuth}
@@ -134,7 +135,8 @@ function SignUpPage() {
             height: "2.7rem",
             background: Color.KAKAO,
             borderRadius: "6.25rem",
-            margin: "16px 0 0 0"
+            margin: "16px 0 0 0",
+            hasHoverEffect: false
           }}
           onClick={handleClickRequestKakaoAuth}
         >
