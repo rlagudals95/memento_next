@@ -10,7 +10,8 @@ export const backEndHost = () => {
   if (process.env.NODE_ENV === EnvType.PROD) {
     return "https://api-prod.com";
   } if (process.env.NODE_ENV === EnvType.DEV) {
-    return "https://api-dev.com";
+    // @TODO - dev server 분리  
+    return "http://localhost:3001";
   } 
     return "http://localhost:3001";
 };

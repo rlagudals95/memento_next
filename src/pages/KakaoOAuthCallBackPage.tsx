@@ -14,7 +14,8 @@ const KakaoOAuthCallBackPage = () => {
       loginMethod: LoginMethod.KAKAO,
       code,
     });
-
+    return;
+    console.log("loginResult : ",loginResult)
     if (loginResult.registeredUser) {
       if (localStorage.getItem("accessToken")) {
         // @ts-ignore
