@@ -17,6 +17,7 @@ const KakaoOAuthCallBackPage = () => {
 
     if (loginResult.registeredUser) {
       if (localStorage.getItem("accessToken")) {
+        // @ts-ignore
         if (window.ReactNativeWebView) {
           postMessage({ accessToken: localStorage.getItem("accessToken") });
         } else {
